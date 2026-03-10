@@ -13,6 +13,6 @@ export class App {
 
   sayHello() {
     console.log("Hello xin chào bạn");
-
+    alert("Xin chào " + this.fullName)
   }
 }
