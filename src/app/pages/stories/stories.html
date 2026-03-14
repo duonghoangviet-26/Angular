@@ -1,0 +1,38 @@
+<h2>Danh sách chuyện tranh</h2>
+@if(stories.length > 0) {
+<p>Chuyện nổi bật nhất</p>
+<div class="story-card">
+    <table border="1">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Author</th>
+                <th>Views</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(story of stories; track story.title ; let i = $index) {
+            @if(story.views > 50000) {
+            <tr>
+                <td>{{i + 1}}</td>
+                <td> {{ story.title }}</td>
+                <td><img [src]="story.image" alt="" width="80px" height="80px"></td>
+                <td>{{ story.author }}</td>
+                <td>{{ story.views }}</td>
+                <td>{{ story.year }}</td>
+                <td>{{ story.genre }}</td>
+                <td><button (click)="hanhleClick(story.title)">Click</button></td>
+            </tr>
+            }}
+        </tbody>
+    </table>
+</div>
+} @else {
+<p>Không có chuyện nào!</p>
+}
