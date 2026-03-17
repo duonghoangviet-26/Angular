@@ -5,6 +5,7 @@ import { Contact } from './pages/contact/contact';
 import { Product } from './pages/product/product';
 import { ProductDetails } from './pages/product/product-details/product-details';
 import { Stories } from './pages/stories/stories';
+import { AddStory } from './pages/add-story/add-story';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: 'product', component: Product },
     { path: 'product/:slug', component: ProductDetails },
     { path: 'stories', component: Stories },
+    { path: 'add-story', component: AddStory },
 
 ];
 
