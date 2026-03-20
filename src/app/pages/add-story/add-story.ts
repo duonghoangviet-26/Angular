@@ -1,21 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-story',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './add-story.html',
   styleUrl: './add-story.css',
 })
 export class AddStory {
   addForm: FormGroup;
   registerForm: FormGroup;
+  loading = false;
+  error: string = '';
+  success: string = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+  ) {
     this.addForm = this.fb.group({
       name: ['', [Validators.required]],
       price: ['', Validators.required],
       category: ['', Validators.required],
+      author: ['', [Validators.required]],
+      views: ['', [Validators.required]],
     });
 
     this.registerForm = this.fb.group({
@@ -34,6 +44,13 @@ export class AddStory {
   }
   get category() {
     return this.addForm.get('category');
+  }
+  get author() {
+    return this.addForm.get('author');
+  }
+
+  get views() {
+    return this.addForm.get('views');
   }
 
 
@@ -54,7 +71,21 @@ export class AddStory {
 
 
   submitForm() {
-    console.log(this.addForm.value);
+    this.loading = false;
+    this.error = '';
+    this.success = '';
+    const data = this.addForm.value
+    this.http.post(`http://localhost:3000/stories`, data).subscribe({
+      next: () => {
+        this.loading = true;
+        this.success = "Thêm thành công";
+        this.addForm.reset()
+      },
+      error: () => {
+        this.loading = false;
+        this.error = 'thêm thất bại'
+      },
+    })
 
   }
 
@@ -62,3 +93,5 @@ export class AddStory {
     console.log(this.registerForm.value);
   }
 }
+
+
