@@ -1,9 +1,23 @@
 {
-    "stories": [
-        {
-            "title": "naruto",
-            "id": 1
-        }
-    ],
-    "users": []
+  "stories": [
+    {
+      "id": "1",
+      "title": "Hành Trình Tuổi Trẻ",
+      "author": "Nguyễn Văn A",
+      "views": 120
+    },
+    {
+      "id": "2",
+      "title": "Cuộc Sống Sinh Viên",
+      "author": "Trần Thị B",
+      "views": 95
+    },
+    {
+      "id": "3",
+      "title": "Lập Trình Frontend",
+      "author": "Lê Văn C",
+      "views": 200
+    }
+  ],
+  "users": []
 }
