@@ -1,5 +1,4 @@
 <h2>Danh sách chuyện tranh</h2>
-@if(stories && stories.length > 1) {
 <div class="story-card">
     <table border="1">
         <thead>
@@ -14,18 +13,16 @@
 
         <tbody>
             @for(story of stories; track story.id ; let i = $index) {
-            @if(story.views > 10) {
             <tr>
                 <td>{{i + 1}}</td>
                 <td> {{ story.title }}</td>
                 <td>{{ story.author }}</td>
                 <td>{{ story.views }}</td>
-                <td><button (click)="hanhleClick(story.id)">Xóa</button></td>
+                <td><button (click)="hanhleClick(story.id)">Xóa</button>
+                    <a [routerLink]="['/edit, story.id']">Sửa</a>
+                </td>
             </tr>
-            }}
+            }
         </tbody>
     </table>
 </div>
-} @else {
-<p>Không có chuyện nào!</p>
-}

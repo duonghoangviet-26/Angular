@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 
 interface Story {
@@ -12,7 +13,7 @@ interface Story {
 
 @Component({
   selector: 'app-stories',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './stories.html',
   styleUrl: './stories.css',
 })

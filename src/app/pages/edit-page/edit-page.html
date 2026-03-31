@@ -1,0 +1,54 @@
+<div>
+    <h1 class="text-3xl form-bold mb-3">Form Thêm Sản Phẩm</h1>
+    <form [formGroup]="editForm" (ngSubmit)="submitForm()" class="max-w-sm mx-auto p-4 border rounded">
+        @if (this.editForm.get('name')?.touched && this.editForm.get('name')?.errors) {
+        <p class="text-red-500">
+            @if (this.editForm.get('name')?.errors?.['required']) {
+            Tên không được để trống
+            }
+            @if (this.editForm.get('name')?.errors?.['minlength']) {
+            Tên phải > 3 ký tự
+            }
+        </p>
+        }
+
+        <div class="mb-3">
+            <label class="block mb-1">Giá</label>
+            <input type="number" formControlName="price" class="w-full border px-2 py-1 rounded" />
+            @if (this.editForm.get("price")?.invalid && this.editForm.get("price")?.touched) {
+            <p style="color:red">Giá không được để chống</p>
+            }
+        </div>
+        <div class="mb-3">
+            <label class="block mb-1">Author</label>
+            <input type="text" formControlName="author" class="w-full border px-2 py-1 rounded" />
+            @if (this.editForm.get("author")?.invalid && this.editForm.get("author")?.touched) {
+            <p style="color:red">Tác giả không được để chống</p>
+            }
+        </div>
+        <div class="mb-3">
+            <label class="block mb-1">View</label>
+            <input type="number" formControlName="views" class="w-full border px-2 py-1 rounded" />
+            @if (this.editForm.get("views")?.invalid && this.editForm.get("views")?.touched) {
+            <p style="color:red">Vieww không được để chống</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="block mb-1">Danh Mục</label>
+            <select formControlName="category" class="w-full border px-2 py-1 rounded">
+                <option value="re">Rẻ</option>
+                <option value="trungbinh">Trung Bình</option>
+                <option value="dat">Đắt</option>
+            </select>
+            @if (this.editForm.get("category")?.invalid && this.editForm.get("category")?.touched) {
+            <p style="color:red">Danh Mục không được để chống</p>
+            }
+        </div>
+
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded" [disabled]="editForm.invalid">
+            Thêm truyện
+        </button>
+    </form>
+
+</div>
