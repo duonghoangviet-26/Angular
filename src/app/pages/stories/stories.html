@@ -19,7 +19,7 @@
                 <td>{{ story.author }}</td>
                 <td>{{ story.views }}</td>
                 <td><button (click)="hanhleClick(story.id)">Xóa</button>
-                    <a [routerLink]="['/edit, story.id']">Sửa</a>
+                    <a routerLink="/edit/{{story.id}}">Sửa</a>
                 </td>
             </tr>
             }
