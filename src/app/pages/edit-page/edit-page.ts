@@ -34,12 +34,12 @@ export class EditPage {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
 
-    if (this.id) {
+    if (this.id) { 
       this.http.get(`http://localhost:3000/stories/${this.id}`).subscribe({
-        next: (data: any) => {
-          this.editForm.patchValue(data);
-        },
-        error: () => {
+        next: (data: any) => { 
+          this.editForm.patchValue(data); 
+        }, 
+        error: () => { 
           this.error = "Lỗi k lấy được dữ liệu "
         }
       })
